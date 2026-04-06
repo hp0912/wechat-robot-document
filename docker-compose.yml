@@ -1,0 +1,9 @@
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wechat-robot-document
+    ports:
+      - "8080:80"
+    restart: unless-stopped
