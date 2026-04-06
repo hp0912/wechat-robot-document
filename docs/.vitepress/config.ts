@@ -26,7 +26,7 @@ export default withMermaid(
       nav: [
         { text: "首页", link: "/" },
         { text: "快速开始", link: "/guide/getting-started" },
-        { text: "Docker 部署", link: "/guide/deployment" },
+        { text: "进阶部署", link: "/guide/deployment" },
       ],
       sidebar: {
         "/guide/": guideSidebar,

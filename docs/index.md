@@ -13,10 +13,10 @@ hero:
       text: 快速开始
       link: /guide/getting-started
     - theme: alt
-      text: 部署指南
+      text: 进阶部署
       link: /guide/deployment
     - theme: alt
-      text: 配置说明
+      text: 使用指南
       link: /guide/configuration
 
 features:
