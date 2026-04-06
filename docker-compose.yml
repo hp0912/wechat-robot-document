@@ -1,9 +1,7 @@
 services:
-  docs:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  wechat-robot-document:
+    image: registry.cn-shenzhen.aliyuncs.com/houhou/wechat-robot-document:latest
     container_name: wechat-robot-document
     ports:
-      - "8080:80"
+      - "4100:80"
     restart: unless-stopped
