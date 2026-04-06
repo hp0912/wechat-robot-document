@@ -1,0 +1,35 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="30" y1="14" x2="166" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1EE86E"/>
+      <stop offset="0.55" stop-color="#07C160"/>
+      <stop offset="1" stop-color="#05A84F"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="46" y1="18" x2="108" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="white" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="36" fill="url(#bg)"/>
+  <path d="M28 28C28 21.3726 33.3726 16 40 16H160C166.627 16 172 21.3726 172 28V64C172 64 147 34 93 34C63 34 45 43 28 58V28Z" fill="url(#gloss)" opacity="0.55"/>
+  <path d="M40 65C40 43.4606 58.2721 26 80.8 26C103.328 26 121.6 43.4606 121.6 65C121.6 86.5394 103.328 104 80.8 104H74.8L54 121V100.041C45.7027 93.2702 40 81.1202 40 65Z" fill="white"/>
+  <path d="M85 114C85 97.9837 98.6553 85 115.5 85C132.345 85 146 97.9837 146 114C146 130.016 132.345 143 115.5 143H111L95 156V141.527C88.9117 136.406 85 126.238 85 114Z" fill="#E9F8EE"/>
+
+  <line x1="83" y1="48" x2="83" y2="43" stroke="#07C160" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="83" cy="39" r="3.5" fill="#07C160"/>
+  <rect x="60" y="51" width="46" height="28" rx="12" fill="#07C160"/>
+  <rect x="66" y="59" width="12" height="8" rx="4" fill="white"/>
+  <rect x="88" y="59" width="12" height="8" rx="4" fill="white"/>
+  <circle cx="72" cy="63" r="2.2" fill="#07C160"/>
+  <circle cx="94" cy="63" r="2.2" fill="#07C160"/>
+  <rect x="75" y="71" width="16" height="3.5" rx="1.75" fill="white"/>
+
+  <line x1="117" y1="98" x2="117" y2="93" stroke="#07C160" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="117" cy="89" r="3.5" fill="#07C160"/>
+  <rect x="97" y="101" width="40" height="25" rx="11" fill="#07C160"/>
+  <rect x="103" y="108" width="10" height="7" rx="3.5" fill="#DFF7E8"/>
+  <rect x="120" y="108" width="10" height="7" rx="3.5" fill="#DFF7E8"/>
+  <circle cx="108" cy="111.5" r="2" fill="#07C160"/>
+  <circle cx="125" cy="111.5" r="2" fill="#07C160"/>
+  <rect x="109.5" y="119" width="14" height="3.5" rx="1.75" fill="#DFF7E8"/>
+</svg>

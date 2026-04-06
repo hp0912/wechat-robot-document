@@ -18,6 +18,9 @@ export default withMermaid(
     lang: "zh-CN",
     title: "微信机器人使用文档",
     description: "基于 VitePress 构建的微信机器人使用文档站点",
+    head: [
+      ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    ],
     cleanUrls: true,
     mermaid: {},
     lastUpdated: true,
@@ -27,6 +30,7 @@ export default withMermaid(
         { text: "首页", link: "/" },
         { text: "快速开始", link: "/guide/getting-started" },
         { text: "进阶部署", link: "/guide/deployment" },
+        { text: "更新日志", link: "/changelog" },
       ],
       sidebar: {
         "/guide/": guideSidebar,
