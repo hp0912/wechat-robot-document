@@ -100,7 +100,7 @@ Body 公共参数
 
 - docker-compose 文件新增本地部署网易云
 
-> 网易云部署完后，记得访问 http://localhost:3000/qrlogin.html 登录
+> 网易云部署完后，记得访问 `http://localhost:3000/qrlogin.html` 登录
 
 - MCP 点歌工具采用本地访问本地部署服务，需要更新 MCP 工具版本
 
