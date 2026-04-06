@@ -6,14 +6,14 @@
 
 ```bash
 pnpm install
-pnpm docs:dev
+pnpm dev
 ```
 
 ## 类型检查与构建
 
 ```bash
 pnpm typecheck
-pnpm docs:build
+pnpm build
 ```
 
 ## Docker 部署

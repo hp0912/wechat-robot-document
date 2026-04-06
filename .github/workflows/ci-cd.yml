@@ -34,7 +34,7 @@ jobs:
         run: pnpm typecheck
 
       - name: Build docs
-        run: pnpm docs:build
+        run: pnpm build
 
   push_to_acr:
     name: Push Docker image to Alibaba Cloud Registry
