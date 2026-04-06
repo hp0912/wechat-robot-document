@@ -1,0 +1,19 @@
+.vp-doc div[class*="language-mermaid"] {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.vp-doc div[class*="language-mermaid"] svg {
+  display: block;
+  width: max-content;
+  min-width: 960px;
+  max-width: none;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 960px) {
+  .vp-doc div[class*="language-mermaid"] svg {
+    min-width: 720px;
+  }
+}

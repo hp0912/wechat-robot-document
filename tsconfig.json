@@ -18,5 +18,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["docs/.vitepress/**/*.ts"]
+  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.d.ts"]
 }

@@ -4,6 +4,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
+RUN apk add --no-cache git
 
 WORKDIR /app
 
@@ -11,7 +12,7 @@ COPY package.json pnpm-lock.yaml tsconfig.json ./
 COPY docs ./docs
 
 RUN pnpm install --frozen-lockfile
-RUN pnpm docs:build
+RUN pnpm build
 
 FROM nginx:1.29-alpine AS runtime
 
