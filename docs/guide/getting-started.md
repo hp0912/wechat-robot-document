@@ -26,9 +26,12 @@ cd ./wechat-robot-client/.deploy/local
 # 先创建一个docker网络，如果以前没创建过的话
 docker network create wechat-robot
 
-# 生成 https 证书，windows 系统
-# windows，<A_LAN_IP> 替换成局域网 ip
+# 生成 https 证书，根据系统选择其中一个执行
+# windows 系统
+# windows 系统，<A_LAN_IP> 替换成局域网 ip
 powershell -ExecutionPolicy Bypass -File ./gen-self-signed-cert.ps1 -IpAddresses <A_LAN_IP>
+# linux 系统，<A_LAN_IP> 替换成局域网 ip
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/CN=<A_LAN_IP>"
 
 # 通过docker-compose启动容器，下面两个命令，哪个能用就用哪个
 docker compose up -d
