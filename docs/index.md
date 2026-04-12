@@ -39,3 +39,24 @@ features:
 **本项目仅供学习交流使用，严禁用于商业用途。**
 
 使用本项目产生的一切法律责任和风险由使用者自行承担，与项目作者无关。请遵守相关法律法规，合法合规使用。
+
+## 官方交流群
+
+<table>
+  <thead>
+    <tr>
+      <th>官方交流群</th>
+      <th>微信赞赏码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img src="https://img.houhoukang.com/char-room-qrcode.jpg?v=20260412" alt="官方交流群" width="300" height="300" />
+      </td>
+      <td>
+        <img src="https://img.houhoukang.com/weChat-robot-pay.jpg" alt="赞赏码" width="300" height="300">
+      </td>
+    </tr>
+  </tbody>
+</table>
