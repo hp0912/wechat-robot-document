@@ -6,6 +6,7 @@ const guideSidebar: DefaultTheme.SidebarItem[] = [
     text: "快速开始",
     items: [
       { text: "快速开始", link: "/guide/getting-started" },
+      { text: "升级指南", link: "/guide/upgrade" },
       { text: "项目架构", link: "/guide/project-architecture" },
       { text: "使用指南", link: "/guide/configuration" },
       { text: "进阶部署", link: "/guide/deployment" },
