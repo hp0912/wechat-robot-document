@@ -72,3 +72,7 @@ docker-compose up -d
 ::: danger 弱口令警告
 默认配置包含很多弱口令，所以不要放在公网访问
 :::
+
+## 后端接口文档
+
+https://yj3pxd0t4m.apifox.cn
