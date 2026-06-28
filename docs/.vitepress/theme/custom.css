@@ -12,6 +12,14 @@
   margin: 0 auto;
 }
 
+.vp-doc ul ul {
+  list-style-type: circle;
+}
+
+.vp-doc ul ul ul {
+  list-style-type: square;
+}
+
 @media (max-width: 960px) {
   .vp-doc div[class*="language-mermaid"] svg {
     min-width: 720px;

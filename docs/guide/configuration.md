@@ -110,73 +110,176 @@
 
 ### 全局设置
 
-全局设置是机器人的默认配置，会自动应用到所有好友和群聊。进入某个好友或群聊的设置后，也可以按需覆盖这些全局配置。
+::: warning 聊天设置
+开启AI聊天设置会自动应用于每一个好友和群聊，也可以在好友设置和群聊设置里面单独定制化设置。
+:::
 
-#### AI 聊天设置
+**AI 聊天设置**
 
-开启`聊天AI`后，机器人可以在好友或群聊中自动回复消息。
+- `AI触发词`：唤醒AI的关键词，以关键词开头的消息会被AI处理，而不用手动@AI。留空时，群聊里通常需要手动 @ 机器人。
 
-- `AI触发词`：以该关键词开头的消息会触发 AI。留空时，群聊里通常需要手动 @ 机器人。
+- `API地址`：比如，[https://new-api.houhoukang.com/](https://new-api.houhoukang.com/)，或者 [https://new-api.houhoukang.com/v1](https://new-api.houhoukang.com/v1) 或者 [https://new-api.houhoukang.com/v2](https://new-api.houhoukang.com/v2)，如果不是以版本号结尾，会自动补全一个/v1。必须是兼容 `OpenAI Chat API` 的接口地址，不支持 `Response API`。
+  - 补充说明，为什么不支持 `doubao-seed` 系列的联网搜索、知识库等等插件，是因为这些插件只支持`Response API`。
 
-- `API地址`：兼容 OpenAI 接口的服务地址，例如 `https://new-api.houhoukang.com/`。
+- `API密钥`：模型服务密钥，比如可以在这里[https://new-api.houhoukang.com/keys](https://new-api.houhoukang.com/keys)获取一个 API 密钥，如果界面上没有，就手动创建一个。
 
-- `API密钥`：模型服务密钥。
+- `聊天模型`：全局的聊天模型，如果好友设置/群聊设置里面没有设置聊天模型，那么就会使用全局的聊天模型。**特别注意**这里可以手动输入，如果列表里没有你想要的模型，可以在输入框手动输入模型。
+  - **特别注意**提取记忆依赖全局聊天模型，这个模型必须支持`JSON Schema`，比如`doubao-seed` 系列的模型，pro 系列官方文档明确说明不支持 JSON Schema，`doubao-seed-2-0-lite-260428` 是支持的
 
-- `聊天模型`：用于日常对话和长期记忆提取。长期记忆依赖 JSON Schema，推荐 `gpt-4o-mini`；国产模型中需选择支持 JSON Schema 的模型。
+- `会话持久记忆`：开启后，机器人会把对话中的长期信息提取到记忆里，后续聊天可按需召回。开启这个功能会显著增加词元(token)的消耗，会略微增加 AI 响应时间。
 
-- `会话持久记忆`：开启后，机器人会把对话中的长期信息提取到记忆里，后续聊天可按需召回。
-
-- `文本嵌入模型`和`文本嵌入维度`：用于文本知识库和长期记忆检索。
+- `文本嵌入模型`和`文本嵌入维度`：用于文本知识库和长期记忆检索。[相关使用文档](https://help.aliyun.com/zh/model-studio/embedding?spm=a2c4g.11186623.help-menu-2400256.d_0_3_10_0.4c234c35xftnri)
 
 - `图像识别模型`：用于识别聊天中的图片内容，让 AI 可以理解图片消息。
 
 - `最大回复`：限制每次回复的最大词元数，填 `0` 表示不限制。
 
 - `人设`：系统提示词，用于约束机器人的说话风格、身份和回答边界。
+  - 人设管理编辑器右上角有个快速填充人设功能，需要在人设管理界面先创建好人设，然后在这里快速填充，一处定义，到处使用。
 
 ::: warning 修改嵌入模型
 修改`文本嵌入模型`或`文本嵌入维度`后，需要到`文本知识库`点击`重建索引`，否则旧向量和新模型可能不兼容。
 :::
 
-#### AI 绘图设置
+**AI 绘图设置**
+
+::: tip 绘图设置
+想要使用 AI 绘图功能，需要在 Skills 管理界面安装`text-to-image`文生图技能或者`image-to-image`图生图技能。[官方 Skills 仓库](https://git.houhoukang.com/houhou/wechat-robot-skills)
+:::
 
 开启`绘图AI`后，好友和群聊可以使用绘图能力。绘图配置使用 JSON 编辑器维护，具体内容取决于你使用的绘图服务或 Skill。常见配置包括服务地址、密钥、默认模型、图片尺寸、生成数量等。
 
 如果某个群或好友需要不同的绘图模型，可以在对应的`好友设置`或`群聊设置`中单独配置。
 
-#### AI 文本转语音设置
+AI 绘图内置支持即梦、豆包、智谱、造相和 GPT，下面是绘图默认配置，可以通过 enabled 字段控制是否启用。
+
+如果编辑器有红色警告，说明 JSON 语法错误，黄色警告，则说明配置错误。
+
+```json
+{
+  "JiMeng": {
+    "enabled": true,
+    "base_url": "http://jimeng-api:9000",
+    "model": "jimeng-4.1",
+    "sessionid": ["xxxxxx"],
+    "sample_strength": 0.5,
+    "resolution": "2k",
+    "ratio": "16:9",
+    "response_format": "url"
+  },
+  "DouBao": {
+    "enabled": true,
+    "api_key": "xxxxxxx",
+    "model": "doubao-seedream-4.0",
+    "size": "2K",
+    "response_format": "url",
+    "watermark": false
+  },
+  "GLM": {
+    "enabled": true
+  },
+  "Z-Image": {
+    "enabled": true,
+    "base_url": "https://api-inference.modelscope.cn/",
+    "api_key": "xxxxxxx",
+    "model": "Z-Image-Turbo"
+  },
+  "OpenAI": {
+    "enabled": true,
+    "base_url": "https://new-api.houhoukang.com",
+    "api_key": "",
+    "model": "gpt-image-2",
+    "n": 1,
+    "size": "auto",
+    "quality": "auto",
+    "background": "auto",
+    "output_format": "png"
+  }
+}
+```
+
+**AI 文本转语音设置**
+
+::: tip 绘图设置
+想要使用 AI 文本转语音功能，需要在 Skills 管理界面安装`voice-message`文生转语音技能。[官方 Skills 仓库](https://git.houhoukang.com/houhou/wechat-robot-skills)
+:::
+
+开启AI文本转语音设置会自动应用于每一个好友和群聊，也可以在好友设置和群聊设置里面单独定制化设置。
 
 开启`文本转语音`后，机器人可以把 AI 回复或指定文本转换成语音。
+
+如果编辑器有红色警告，说明 JSON 语法错误，黄色警告，则说明配置错误。
 
 - `语音模型`：当前支持`豆包`和`小米`。
 
 - `语音设置`：使用 JSON 编辑器维护，例如音色、语速、音量、服务参数等。
 
-#### 群聊欢迎新成员设置
+默认语音配置如下:
+
+```json
+{
+  "doubao": {
+    "request_body": {
+      "namespace": "",
+      "req_params": {
+        "audio_params": {
+          "format": "mp3",
+          "sample_rate": 24000
+        },
+        "model": "",
+        "speaker": "zh_female_vv_uranus_bigtts",
+        "text": ""
+      },
+      "user": {
+        "uid": ""
+      }
+    },
+    "request_header": {
+      "X-Api-Access-Key": "",
+      "X-Api-App-Id": "",
+      "X-Api-Request-Id": "",
+      "X-Api-Resource-Id": "seed-tts-2.0",
+      "X-Control-Require-Usage-Tokens-Return": ""
+    },
+    "url": "https://openspeech.bytedance.com/api/v3/tts/unidirectional"
+  },
+  "mimo": {
+    "model": "mimo-v2.5-tts"
+  }
+}
+```
+
+**群聊欢迎新成员设置**
+
+开启欢迎新成员会自动应用于每一个群聊，也可以在群聊设置里面单独定制化设置。
 
 开启`欢迎新成员`后，新成员进群时机器人会自动发送欢迎内容。欢迎形式支持：
 
 - `纯文字`：发送欢迎语。
 
-- `表情包`：填写表情包 MD5 和长度。
+- `表情包`：填写表情包 MD5 和长度。可以在聊天记录界面，按下 F12 打开浏览器控制台，切换到`网络`面板，查看接口返回数据找到这两个参数，也可以去机器人 mysql 数据库查找这两个参数。
 
 - `图片`：填写图片地址。
 
 - `卡片`：填写欢迎语和链接地址。
 
-#### 群聊拍一拍设置
+**群聊拍一拍设置**
+
+开启拍一拍交互会自动应用于每一个群聊，也可以在群聊设置里面单独定制化设置。
 
 开启`拍一拍`后，群成员拍机器人时会自动回复。交互类型支持：
 
 - `文字`：直接发送配置的文字。
 
-- `语音`：把配置的文字转换成语音发送，需要填写语音音色。
+- `语音`：把配置的文字转换成语音发送，需要填写语音音色。需要先设置好 `AI 文本转语音设置`
 
-#### 群聊退群提醒设置
+**群聊退群提醒设置**
+
+开启群聊退群提醒设置会自动应用于每一个好友和群聊，也可以在好友设置和群聊设置里面单独定制化设置。
 
 开启`退群提醒`后，有成员退出群聊时机器人会在群内发送提醒。提醒文本可使用 `{placeholder}` 表示退出群聊的成员名称。
 
-#### 群聊排行榜设置
+**群聊排行榜设置**
 
 开启后可配置每日、每周、每月发榜时间。排行榜发布的是前一天、上一周、上个月的数据。
 
@@ -184,7 +287,7 @@
 排行榜不会自动应用到所有群聊。全局设置只是提供默认参数，仍需要进入具体`群聊设置`手动开启排行榜。
 :::
 
-#### 群聊总结设置
+**群聊总结设置**
 
 开启后可配置总结模型、显示模式和每天总结时间。显示模式支持`文本`和`图片`，总结内容来自前一天的聊天记录。
 
@@ -192,7 +295,7 @@
 群聊总结不会自动应用到所有群聊。需要进入具体`群聊设置`手动开启。
 :::
 
-#### 每日早报和每日早安
+**每日早报和每日早安**
 
 - `每日早报`：可选择文字或图片形式，按每天设定时间发送前一天新闻。
 
