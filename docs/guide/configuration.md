@@ -200,7 +200,7 @@ AI 绘图内置支持即梦、豆包、智谱、造相和 GPT，下面是绘图�
 
 **AI 文本转语音设置**
 
-::: tip 绘图设置
+::: tip 文本转语音设置
 想要使用 AI 文本转语音功能，需要在 Skills 管理界面安装`voice-message`文生转语音技能。[官方 Skills 仓库](https://git.houhoukang.com/houhou/wechat-robot-skills)
 :::
 
