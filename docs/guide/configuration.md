@@ -307,23 +307,25 @@ AI 绘图内置支持即梦、豆包、智谱、造相和 GPT，下面是绘图�
 
 系统设置用于配置机器人和外部系统交互、通知、安全调用以及自动处理策略。
 
-- `Webhook 地址`：配置后，机器人会以 `POST` 方式把相关事件推送到该地址。
+- `Webhook 地址`：配置后，机器人会以 `POST` 方式把微信的消息转发到该地址，同时 query 参数会携带 robot_id robot_code robot_wxid。
 
-- `Webhook 请求头`：JSON 格式，可填写 `Authorization`、`X-API-Key`、`Content-Type` 等自定义请求头。
+- `Webhook 请求头`：JSON 格式，可填写 `Authorization`、`X-API-Key`、`Content-Type` 等自定义请求头，主要还是处理权限认证问题，没有权限认证方面的诉求可以不填请求头。
 
-- `Api密钥调用接口`：开启后可以使用 Api 密钥调用管理后台接口。Api 密钥支持三种传递方式：`Authorization` Header、`X-API-Token` Header、`api_token` Query 参数。
+- `Api密钥调用接口`：开启后可以使用 Api 密钥调用管理后台接口。Api 密钥支持三种传递方式：`Authorization` Header、`X-API-Token` Header、`api_token` Query 参数，`开启然后点击保存，即可看到 API 密钥`。
+
+- `API 密钥`: Api密钥用于调用接口，刷新后以前的Api密钥将失效，支持Authorization Header、X-API-Token Header、api_token Query参数三种方式调用接口 (界面上所有需要登录态的接口均可使用Api密钥调用)
 
 - `刷新 Api 密钥`：刷新后旧密钥立即失效。
 
 - `离线通知`：机器人离线时发送通知。当前可选择`推送加`或`企业微信`。
 
-- `推送加`：填写推送加地址和用户 token。
+- `推送加`：填写推送加地址(https://www.pushplus.plus/send)和用户 token(https://www.pushplus.plus/uc.html页面的用户token)。
 
 - `企业微信`：填写企业 ID、AgentId、Secret，可选代理地址和推送用户 ID；推送用户 ID 不填默认 `ALL`，多个用户 ID 用 `|` 分隔。
 
 - `自动通过好友`：开启后自动通过好友申请，可设置延迟秒数，降低风控风险。
 
-- `自动邀请入群`：开启后，用户发送`申请进群 xxx群`即可自动拉入对应群聊。`申请进群`后面必须有空格，`xxx群`需要匹配群昵称。
+- `自动邀请入群`：开启后，发送申请进群 xxx群 (申请进群后面必须带空格，xxx群为群昵称) 自动加入群聊，根据群昵称查找群聊，请确认联系人已经同步且群昵称没有重复。
 
 ::: danger 高危操作
 `自动通过好友`可能触发微信风控，请谨慎开启。系统在多个好友申请同时到来时，每通过一个申请会额外休眠 10 秒。
