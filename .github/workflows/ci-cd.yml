@@ -68,6 +68,8 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
+          provenance: false
+          sbom: false
           cache-from: type=gha,scope=wechat-robot-document-docker
           cache-to: type=gha,mode=max,scope=wechat-robot-document-docker
           build-args: |
