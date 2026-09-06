@@ -16,25 +16,56 @@
 
 ## 快速部署
 
-```
+Windows 请在 **PowerShell** 中执行，Linux 请在终端中执行。下面的步骤请在同一个终端中依次完成。
+
+### 1. 克隆项目并创建网络
+
+```bash
 # 克隆本项目
 git clone git@github.com:hp0912/wechat-robot-client.git
 
-# 进入部署目录
+# 进入部署目录，后续命令都在此目录下执行
 cd ./wechat-robot-client/.deploy/local
 
-# 先创建一个docker网络，如果以前没创建过的话
+# 如果以前没有创建过此 Docker 网络，先创建网络
 docker network create wechat-robot
+```
 
-# 生成 https 证书，根据系统选择其中一个执行
-# windows 系统
-# windows 系统，<A_LAN_IP> 替换成局域网 ip
-powershell -ExecutionPolicy Bypass -File ./gen-self-signed-cert.ps1 -IpAddresses <A_LAN_IP>
-# linux 系统，<A_LAN_IP> 替换成局域网 ip
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/CN=<A_LAN_IP>"
+### 2. 生成并检查 HTTPS 证书
 
-# 通过docker-compose启动容器，下面两个命令，哪个能用就用哪个
+根据系统选择下面一种方式执行，将示例中的 `192.168.1.10` 替换为部署电脑的局域网 IP。
+
+**Windows（PowerShell）**
+
+```powershell
+# 生成证书
+powershell -NoProfile -ExecutionPolicy Bypass -File .\gen-self-signed-cert.ps1 -IpAddresses 192.168.1.10
+
+# 检查证书和私钥是否存在，以及文件大小
+Get-Item .\secrets\nginx\tls.crt, .\secrets\nginx\tls.key -ErrorAction Stop |
+  Select-Object Name, Length
+```
+
+**Linux**
+
+```bash
+# 生成证书
+sh ./gen-self-signed-cert.sh --ip 192.168.1.10
+
+# 检查证书和私钥是否存在，以及文件大小
+ls -l ./secrets/nginx/tls.crt ./secrets/nginx/tls.key
+```
+
+检查结果必须同时包含 `tls.crt` 和 `tls.key` 两个文件，且文件大小都不为 `0`。
+
+### 3. 启动容器
+
+下面两个命令选择一个执行：
+
+```bash
 docker compose up -d
+
+# 如果上面的命令不可用，使用这个命令
 docker-compose up -d
 ```
 
@@ -44,7 +75,7 @@ docker-compose up -d
 
 ## 访问管理后台
 
-浏览器访问`https://127.0.0.1:8443 `，登录密钥`12345678`
+浏览器访问`https://127.0.0.1:8443`，登录密钥`12345678`
 
 ## 创建机器人
 
