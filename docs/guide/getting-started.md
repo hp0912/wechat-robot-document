@@ -22,7 +22,7 @@ Windows 请在 **PowerShell** 中执行，Linux 请在终端中执行。下面�
 
 ```bash
 # 克隆本项目
-git clone git@github.com:hp0912/wechat-robot-client.git
+git clone https://github.com/hp0912/wechat-robot-client.git
 
 # 进入部署目录，后续命令都在此目录下执行
 cd ./wechat-robot-client/.deploy/local
