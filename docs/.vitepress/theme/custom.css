@@ -25,3 +25,62 @@
     min-width: 720px;
   }
 }
+
+.vp-doc img[data-image-preview] {
+  cursor: zoom-in;
+}
+
+.vp-doc img[data-image-preview]:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 4px;
+}
+
+.image-preview {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 64px 24px 24px;
+  border: 0;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.image-preview[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-preview::backdrop {
+  background: rgb(0 0 0 / 85%);
+}
+
+.image-preview > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: default;
+}
+
+.image-preview-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 15%);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-preview-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
