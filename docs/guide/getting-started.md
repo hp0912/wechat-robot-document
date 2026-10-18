@@ -106,4 +106,40 @@ docker-compose up -d
 
 ## 后端接口文档
 
-https://yj3pxd0t4m.apifox.cn
+https://wechat-sz.houhoukang.com/api/v1/swagger/doc.json
+
+## 扫码后手机上没有登录按钮怎么办？
+
+这是触发了微信的人脸安全认证，这个时候微信管理后台的扫码弹窗会自动跳转到人脸认证界面，有一个人脸认证二维码，下方还有一个 `手机代理设置`。
+
+1. 扫描人脸二维码必须用另外一个手机微信，如果你手机微信支持多开也行，登录机器人的那个手机微信里面的登录弹窗不能关闭，否则会导致人脸认证启动失败。
+
+2. 另外一个扫描人脸二维码的手机，在扫描这个人脸认证二维码之前，必须先按照 `手机代理设置` 的教程设置好手机代理
+   - `手机代理设置` 下方有一个 `下载代理 CA 证书` 的按钮，点击下载并安装证书，如果安装失败，请点击 `复制证书下载地址` 按钮复制链接到手机浏览器打开，苹果手机请使用 Safari 浏览器打开
+   - 安装完证书之后，必须设置信任证书，然后配置代理，下面是苹果手机的安装证书、信任证书、设置代理的详细步骤，安卓手机需要使用 VPN，步骤略。
+   - 证书和代理设置好了之后，就可以扫描人脸认证二维码了，按提示操作即可，通过了人脸认证之后会有一个下一步，点击没反应，不管它，切换到登录机器人的那个微信，这个时候登录弹窗应该出现了确认按钮，点击确定，管理后台会自动进行后续步骤，直到登录成功。
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <img src="../assets/ipad-face/ca-install.png" alt="CA 证书安装" />
+      </td>
+      <td>
+        <img src="../assets/ipad-face/ca-install-2.png" alt="CA 证书安装" />
+      </td>
+      <td>
+        <img src="../assets/ipad-face/ca-trust.png" alt="CA 证书信任" />
+      </td>
+      <td>
+        <img src="../assets/ipad-face/proxy-entry.png" alt="代理入口" />
+      </td>
+      <td>
+        <img src="../assets/ipad-face/proxy-entry-2.png" alt="代理入口" />
+      </td>
+      <td>
+        <img src="../assets/ipad-face/proxy-setting.png" alt="代理设置" />
+      </td>
+    </tr>
+  </tbody>
+</table>
